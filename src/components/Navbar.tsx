@@ -37,7 +37,8 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        showSolid ? "glass border-b border-border shadow-sm" : "bg-transparent"
+        /* Changed from 'glass' to pure 'bg-background' (Beige) on scroll */
+        showSolid ? "bg-background border-b border-border shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
@@ -46,7 +47,7 @@ const Navbar = () => {
           className="text-2xl font-bold transition-colors duration-300"
           style={{ fontFamily: "'Playfair Display', serif" }}
         >
-          {/* Crisp, clean, dynamic text coloring. White on images, charcoal on scroll. */}
+          {/* Dynamic text: Charcoal on Beige, White on Hero Images */}
           <span className={showSolid ? "text-foreground" : "text-primary-foreground"}>
             Grapi
           </span>
@@ -109,7 +110,8 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-t border-border glass overflow-hidden"
+            /* Changed to 'bg-background' (Beige) to kill the yellow/glass vibe */
+            className="md:hidden border-t border-border bg-background overflow-hidden"
           >
             <ul className="flex flex-col p-4 gap-1">
               {navLinks.map((l, i) => (
@@ -125,7 +127,7 @@ const Navbar = () => {
                     style={{ fontFamily: "'Lato', sans-serif" }}
                     className={`block py-3 px-4 rounded-xl text-sm font-medium transition-colors ${
                       location.pathname === l.to
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
                         : "text-foreground hover:bg-secondary"
                     }`}
                   >
